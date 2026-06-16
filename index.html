@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ecommercesite</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#shop" aria-label="ecommercesite home">
+        <span class="brand-mark">E</span>
+        <span>ecommercesite</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#shop">Shop</a>
+        <a href="#sell">Sell</a>
+        <a href="#cart">Cart <span id="cartCount">0</span></a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <aside class="panel account-panel" aria-label="Account">
+        <div>
+          <p class="eyebrow">Account</p>
+          <h1>Buy and sell in one place.</h1>
+          <p class="muted">Signed in as <strong id="currentUser">Guest shopper</strong></p>
+        </div>
+
+        <div class="segmented" role="tablist" aria-label="Account mode">
+          <button class="segment active" id="loginTab" type="button">Login</button>
+          <button class="segment" id="signupTab" type="button">Signup</button>
+        </div>
+
+        <form id="authForm" class="form">
+          <label class="field signup-only hidden">
+            <span>Full name</span>
+            <input id="nameInput" name="name" autocomplete="name" />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input id="emailInput" name="email" type="email" autocomplete="email" required />
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input
+              id="passwordInput"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+          </label>
+          <button class="primary" id="authButton" type="submit">Login</button>
+        </form>
+      </aside>
+
+      <section class="content">
+        <section class="hero" aria-labelledby="pageTitle">
+          <div>
+            <p class="eyebrow">Frontend only marketplace</p>
+            <h2 id="pageTitle">Simple e-commerce app</h2>
+            <p>
+              Add products to cart or upload your own sale item. Listings are saved in this
+              browser with the seller name and price.
+            </p>
+          </div>
+          <a class="secondary" href="#sell">List an item</a>
+        </section>
+
+        <section id="shop" class="section" aria-labelledby="shopTitle">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Shop</p>
+              <h2 id="shopTitle">Available items</h2>
+            </div>
+            <button class="secondary" id="resetListingsButton" type="button">Reset demo data</button>
+          </div>
+          <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <section id="sell" class="section" aria-labelledby="sellTitle">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Sell</p>
+              <h2 id="sellTitle">Upload item for sale</h2>
+            </div>
+          </div>
+
+          <form id="listingForm" class="listing-form">
+            <label class="field">
+              <span>Item name</span>
+              <input id="itemNameInput" required />
+            </label>
+            <label class="field">
+              <span>Price</span>
+              <input id="priceInput" type="number" min="1" step="0.01" required />
+            </label>
+            <label class="field">
+              <span>Your seller name</span>
+              <input id="sellerNameInput" required />
+            </label>
+            <label class="field">
+              <span>Category</span>
+              <input id="categoryInput" value="General" />
+            </label>
+            <label class="field full">
+              <span>Image URL</span>
+              <input id="imageInput" placeholder="https://example.com/item.jpg" />
+            </label>
+            <label class="field full">
+              <span>Description</span>
+              <textarea id="descriptionInput" rows="4"></textarea>
+            </label>
+            <button class="primary" type="submit">Save listing</button>
+          </form>
+        </section>
+
+        <section id="cart" class="section" aria-labelledby="cartTitle">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Cart</p>
+              <h2 id="cartTitle">Shopping cart</h2>
+            </div>
+            <strong id="cartTotal">$0.00</strong>
+          </div>
+          <div class="cart-list" id="cartList"></div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
